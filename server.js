@@ -59,6 +59,15 @@ function filterByQuery(query, animalsArray){
     }
     return filteredResults;
 }
+
+/* 
+takes in the id and array of animals and returns a single animal object
+*/
+function findById(id, animalsArray) {
+    const result = animalsArray.filter(animal => animal.id === id)[0];
+    return result;
+}
+
 // Adding a route
 app.get('/api/animals', (req, res) => {
     /* send hello to the client when access the url in the get
@@ -89,3 +98,14 @@ app.get('/api/animals', (req, res) => {
     res.json(results);
 
 });
+
+// adding another route 
+/* req.params. Unlike the query object, the param object needs to be defined in the route path */
+app.get('/api/animals/:id', (req, res) => {
+    const result = findById(req.params.id, animals);
+    if (result) {
+        res.json(result);
+    }else{
+        res.send(404);
+    }
+  });
