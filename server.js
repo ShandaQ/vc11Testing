@@ -64,7 +64,9 @@ function findById(id, animalsArray) {
     const result = animalsArray.filter(animal => animal.id === id)[0];
     return result;
 }
-
+app.get('/', (req, res) => {
+    res.json(results);
+});
 // Adding a route
 app.get('/api/animals', (req, res) => {
     /* send hello to the client when access the url in the get
