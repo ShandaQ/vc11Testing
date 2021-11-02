@@ -65,6 +65,7 @@ function findById(id, animalsArray) {
     return result;
 }
 app.get('/', (req, res) => {
+    let results = animals;
     res.json(results);
 });
 // Adding a route
